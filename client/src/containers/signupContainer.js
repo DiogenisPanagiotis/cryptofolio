@@ -61,7 +61,7 @@ class signupContainer extends Component {
                                             className="form-control" 
                                             id="exampleInputEmail1" 
                                             aria-describedby="emailHelp" 
-                                            placeholder="Enter email"
+                                            placeholder="Username"
                                             onChange = { ({target}) => handleChangeUsername({username: target.value}) }
                                             />
                                     </div>
