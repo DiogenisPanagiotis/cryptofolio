@@ -17,7 +17,7 @@ class App extends Component {
     	return (
       		<div className="container">
         		<div className="jumbotron">
-        		<h2>Cryptofolio</h2>
+        		<h2>Cryptofolio!</h2>
         		{this.do()}
         	</div>
       	</div>
