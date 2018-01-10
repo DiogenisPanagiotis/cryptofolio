@@ -1,1 +1,21 @@
+.jumbotron {
+	background-color: #F8F9FA;
+	border: solid 1px #eee;
+	padding: 32px;
+}
 
+.card {
+	border: solid 1px #eee;
+}
+
+.form-control {
+	border: solid 1px #eee;
+}
+
+.btn:hover {
+	cursor: pointer;
+}
+
+#postFormMessage {
+	color: #dc3545 !important;
+}

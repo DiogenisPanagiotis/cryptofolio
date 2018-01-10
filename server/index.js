@@ -10,13 +10,6 @@ app.use(bodyParser.urlencoded({extended: false}))
 
 app.use(express.static(path.join(__dirname, '../client/build')))
 
-app.get('/api/hello', (req, res) => {
-
-  res.json("hello world")
-
-  console.log(`Sent!`)
-})
-
 routes(app, express)
 
 app.listen(port)
