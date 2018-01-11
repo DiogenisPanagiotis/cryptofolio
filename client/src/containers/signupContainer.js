@@ -59,6 +59,7 @@ class signupContainer extends Component {
                                         <label htmlFor="exampleInputEmail1">Username</label>
                                         <input 
                                             autoFocus
+                                            maxLength={40}
                                             value={username} 
                                             type="email" 
                                             className="form-control" 
@@ -71,6 +72,7 @@ class signupContainer extends Component {
                                     <div className="form-group form-group-password">
                                         <label htmlFor="exampleInputPassword1">Password</label>
                                         <input 
+                                            maxLength={40}
                                             value={password} 
                                             type="password" 
                                             className="form-control" 

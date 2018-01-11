@@ -22,6 +22,7 @@
 
 .cryptofolio {
 	text-align: center;
+	font-family: 'Oleo Script', cursive;
 }
 
 .form-control {
@@ -35,3 +36,5 @@
 .form-control:disabled {
 	background-color: #F8F9FA;
 }
+
+

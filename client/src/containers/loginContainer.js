@@ -62,6 +62,7 @@ class loginContainer extends Component {
                                     <label htmlFor="exampleInputEmail2">Username</label>
                                     <input 
                                         autoFocus
+                                        maxLength={40}
                                         disabled={localStorage.user ? true : false}
                                         value={username} 
                                         type="email" 
@@ -76,6 +77,7 @@ class loginContainer extends Component {
                                     <label htmlFor="exampleInputPassword2">Password</label>
                                     <input 
                                         disabled={localStorage.user ? true : false}
+                                        maxLength={40}
                                         value={password} 
                                         type="password" 
                                         className="form-control" 
