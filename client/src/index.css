@@ -19,3 +19,19 @@
 #postFormMessage {
 	color: #dc3545 !important;
 }
+
+.cryptofolio {
+	text-align: center;
+}
+
+.form-control {
+	background-color: #F8F9FA;
+}
+
+.switchtosignup {
+	text-align: center;
+}
+
+.form-control:disabled {
+	background-color: #F8F9FA;
+}

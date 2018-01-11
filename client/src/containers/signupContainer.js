@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../actions/actions'
+import { Link } from 'react-router-dom'
 import '../index.css'
 
 class signupContainer extends Component {
@@ -49,6 +50,8 @@ class signupContainer extends Component {
                     <div className='col-lg-3'></div>
                     <div className='col-lg-6'>
                         <div className='jumbotron'>
+                            <h3 className="cryptofolio">Cryptofolio</h3>
+                            <hr/>
                             <div className="card">
                                 <div className="card-body">
                                     <h5 className="card-title">Sign Up</h5>
@@ -81,7 +84,9 @@ class signupContainer extends Component {
                                 </div>
                             </div>
                             <br/>
-                            <button onClick={() => this.addUser()} type="submit" className="btn btn-primary btn-block">Sign Up</button>
+                            <button onClick={() => this.addUser()} type="submit" className="btn btn-primary btn-block">Sign up</button>
+                            <br/>
+                            <div className="switchtosignup">Have an account? <Link to="/login">Login</Link></div>
                         </div>
                     </div>
                     <div className='col-lg-3'></div>

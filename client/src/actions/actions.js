@@ -1,5 +1,6 @@
 import { GET_USERS, ADD_USER, HANDLE_CHANGE_USERNAME, HANDLE_CHANGE_PASSWORD, 
-         TOGGLE_SIGNEDUP, SET_USERNAMETAKEN_TRUE, SET_USERNAMETAKEN_FALSE } from '../constants'
+         TOGGLE_SIGNEDUP, SET_USERNAMETAKEN_TRUE, SET_USERNAMETAKEN_FALSE,
+         SET_INVALID } from '../constants'
 
 import * as service from '../services'
 
@@ -29,7 +30,10 @@ const actions = {
     }),
     setUsernameTakenFalse: () => ({
         type: SET_USERNAMETAKEN_FALSE
-    })           
+    }),
+    setInvalid: () => ({
+        type: SET_INVALID
+    })       
 }
 
 export default actions
