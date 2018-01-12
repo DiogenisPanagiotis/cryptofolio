@@ -3,15 +3,17 @@ body {
 }
 
 .jumbotron {
-	/*background-color: #F8F9FA;*/
 	background-color: #fff;
 	border: solid 1px #eee;
 	padding: 32px;
 	margin: 30px auto 0;
 }
 
+.jumbotron-login {
+	margin: 90px auto 0;
+}
+
 .card {
-	/*border: solid 1px #eee;*/
 	border: solid 1px #fff;
 }
 

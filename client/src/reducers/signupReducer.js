@@ -18,21 +18,25 @@ export default function signupReducer(state = initialState, action) {
                 ...state,
                 email: action.payload.email,
                 usernameTaken: false,
-                invalid: false
+                invalid: false,
+                signedup: false
             } 
         case HANDLE_CHANGE_USERNAME:
             return {
                 ...state,
                 username: action.payload.username,
                 usernameTaken: false,
-                invalid: false
+                invalid: false,
+                signedup: false
             }    
         case HANDLE_CHANGE_PASSWORD:
             return {
                 ...state,
                 password: action.payload.password,
                 usernameTaken: false,
-                invalid: false
+                invalid: false,
+                signedup: false
+
             }
         case TOGGLE_SIGNEDUP:
             return {
