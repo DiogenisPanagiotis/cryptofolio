@@ -62,8 +62,8 @@ class signupContainer extends Component {
     }
 
     render() {
-        const { email, username, password, signedup, usernameTaken, invalid } = this.props.signupReducer
-        const { handleChangeEmail, handleChangeUsername, handleChangePassword } = this.props.actions
+        let { email, username, password, signedup, usernameTaken, invalid } = this.props.signupReducer
+        let { toggleSignupOrLogin, handleChangeEmail, handleChangeUsername, handleChangePassword } = this.props.actions
         return (
             <div className='container'>
                 <div className='row'>
@@ -76,7 +76,7 @@ class signupContainer extends Component {
                                     Manage and track your cryptocurrency investments.
                                 </h5>
                                 <div className={`card-body ${invalid ? 'card-body-login' : ''}`}>
-                                    <Link to="/login"><button type="submit" className="btn btn-primary btn-block">Login</button></Link>
+                                    <button onClick={() => toggleSignupOrLogin(false)} type="submit" className="btn btn-primary btn-block">Login</button>
                                     <div className="row">
                                         <div className='col-5'><hr/></div>
                                         <div className='col-2 or'> OR </div>
@@ -131,7 +131,7 @@ class signupContainer extends Component {
                         <div className='jumbotron jumbotron-switch'>
                             <div className='card'>
                                 <div className='card-body card-body-switch'>
-                                    <div className="switchtosignup">Have an account? <Link to="/login">Login</Link></div>
+                                    <div className="switchtosignup">Have an account? <Link to='/' onClick={() => toggleSignupOrLogin(false)}>Login</Link></div>
                                 </div>
                             </div>
                         </div>

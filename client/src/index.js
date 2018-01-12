@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import store from './store'
 import registerServiceWorker from './registerServiceWorker';
 import App from './containers/App'
-import loginContainer from './containers/loginContainer'
 import './index.css';
 
 render(
@@ -13,7 +12,6 @@ render(
         <BrowserRouter>
         	<div>
 	            <Route exact path="/" component={App}/>
-	            <Route exact path="/login" component={loginContainer}/>
         	</div>
         </BrowserRouter>
     </Provider>,

@@ -9,8 +9,8 @@ import '../index.css'
 class loginContainer extends Component {
 
     componentDidMount() {
-        const { handleChangeUsername, handleChangePassword } = this.props.actions
-        const { getUsers } = this.props.actions
+        let { handleChangeUsername, handleChangePassword } = this.props.actions
+        let { getUsers } = this.props.actions
         window.addEventListener('resize', this.resize)
         handleChangeUsername({ username: '' })
         handleChangePassword({ password: '' })
@@ -24,7 +24,7 @@ class loginContainer extends Component {
     }
 
     verifyUser() {
-        const { getUsers, setInvalid } = this.props.actions
+        let { getUsers, setInvalid } = this.props.actions
         let { username, password, invalid } = this.props.loginReducer
         let { users } = this.props.userReducer
         let { localStorage } = window
@@ -57,7 +57,7 @@ class loginContainer extends Component {
 
     render() {
         let { username, password, invalid } = this.props.loginReducer
-        let { handleChangeUsername, handleChangePassword } = this.props.actions
+        let { toggleSignupOrLogin, handleChangeUsername, handleChangePassword } = this.props.actions
         let { localStorage } = window
         return (
             <div className='container'>
@@ -114,7 +114,7 @@ class loginContainer extends Component {
                         <div className="jumbotron jumbotron-switch">
                             <div className="card">
                                 <div className="card-body card-body-switch">
-                                    <div className="switchtosignup">Don't have an account? <Link to="/">Sign up</Link></div>
+                                    <div className="switchtosignup">Don't have an account? <Link to='/' onClick={() => toggleSignupOrLogin(true)}>Sign up</Link></div>
                                 </div>
                             </div>
                         </div>
