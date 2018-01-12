@@ -89,7 +89,6 @@ class signupContainer extends Component {
                                     </div>
                                     <div className="form-group">
                                         <input 
-                                            autoFocus
                                             maxLength={40}
                                             value={email} 
                                             type="email" 

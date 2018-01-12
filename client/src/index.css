@@ -37,7 +37,8 @@ body {
 }
 
 .form-control {
-	background-color: #F8F9FA;
+	background-color: #fafafa;
+	font-size: 14px;
 }
 
 .switchtosignup {
@@ -102,6 +103,10 @@ body {
 .jumbotron-hide {
 	background-color: #FAFAFA;
 	border: none;
+}
+
+.btn-block {
+	font-size: 14px;
 }
 
 
