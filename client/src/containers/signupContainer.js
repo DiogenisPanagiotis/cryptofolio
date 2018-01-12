@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../actions/actions'
 import { Link } from 'react-router-dom'
+import passwordHash from 'password-hash'
 import '../index.css'
 
 class signupContainer extends Component {
@@ -38,7 +39,8 @@ class signupContainer extends Component {
         }
 
         if (email.length > 0 && username.length > 0 && password.length > 0) {
-            addUser({ email: email, username: username, password: password }).then(() => {
+            let hashedPassword = passwordHash.generate(password)
+            addUser({ email: email, username: username, password: hashedPassword }).then(() => {
                 handleChangeEmail({ email: '' })
                 handleChangeUsername({ username: '' })
                 handleChangePassword({ password: '' })

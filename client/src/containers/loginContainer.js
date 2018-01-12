@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../actions/actions'
 import { Link } from 'react-router-dom'
+import passwordHash from 'password-hash'
 import '../index.css'
 
 class loginContainer extends Component {
@@ -27,7 +28,8 @@ class loginContainer extends Component {
 
         if (users && users.length > 0) {
             for (let userModel of users) {
-                if (userModel.username === username && userModel.password === password) {
+                let verifyPassword = passwordHash.verify(password, userModel.password)
+                if (userModel.username === username && verifyPassword) {
                     let userCookie = JSON.stringify({ username: userModel.username })
                     localStorage.setItem('user', userCookie)
                     if (invalid === true) {

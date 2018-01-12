@@ -59,7 +59,7 @@ body {
 	padding: 10px 0px 10px 0px;
 }
 
-.alert-primary {
+.alert-primary, .alert-success {
 	font-size: 12px;
 	padding: 8px 20px;
 	text-align: center;
