@@ -1,4 +1,4 @@
-import { GET_USERS, ADD_USER, HANDLE_CHANGE_USERNAME, HANDLE_CHANGE_PASSWORD, 
+import { GET_USERS, ADD_USER, HANDLE_CHANGE_EMAIL, HANDLE_CHANGE_USERNAME, HANDLE_CHANGE_PASSWORD, 
          TOGGLE_SIGNEDUP, SET_USERNAMETAKEN_TRUE, SET_USERNAMETAKEN_FALSE,
          SET_INVALID } from '../constants'
 
@@ -13,6 +13,10 @@ const actions = {
     addUser: (user) => ({
         type: ADD_USER,
         payload: service.addUser(user)
+    }),
+    handleChangeEmail: (email) => ({
+        type: HANDLE_CHANGE_EMAIL,
+        payload: email
     }),
     handleChangeUsername: (username) => ({
         type: HANDLE_CHANGE_USERNAME,

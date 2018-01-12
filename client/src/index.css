@@ -1,11 +1,18 @@
+body {
+	background-color: #FAFAFA;
+}
+
 .jumbotron {
-	background-color: #F8F9FA;
+	/*background-color: #F8F9FA;*/
+	background-color: #fff;
 	border: solid 1px #eee;
 	padding: 32px;
+	margin: 30px auto 0;
 }
 
 .card {
-	border: solid 1px #eee;
+	/*border: solid 1px #eee;*/
+	border: solid 1px #fff;
 }
 
 .form-control {
@@ -18,6 +25,8 @@
 
 #postFormMessage {
 	color: #dc3545 !important;
+	text-align: center;
+	margin-top: 24px;
 }
 
 .cryptofolio {
@@ -31,10 +40,35 @@
 
 .switchtosignup {
 	text-align: center;
+	color: #868E95;
 }
 
 .form-control:disabled {
 	background-color: #F8F9FA;
+}
+
+.or {
+	text-align: center;
+	vertical-align: center;
+	color: #868E95;
+	font-size: 11px;
+	padding: 9px 0px 0px 0px!important;
+}
+
+.jumbotron-switch {
+	padding: 10px 0px 10px 0px;
+}
+
+.alert-primary {
+	font-size: 12px;
+	padding: 8px 20px;
+	text-align: center;
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+
+.card-body-login {
+	padding-bottom: 0px;
 }
 
 

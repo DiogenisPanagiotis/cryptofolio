@@ -47,61 +47,68 @@ class loginContainer extends Component {
         let { username, password, invalid } = this.props.loginReducer
         let { handleChangeUsername, handleChangePassword } = this.props.actions
         let { localStorage } = window
+        console.log(invalid)
         return (
             <div className='container'>
                 <div className='row'>
-                    <div className='col-lg-3'></div>
-                    <div className='col-lg-6'>
+                    <div className='col-lg-4'></div>
+                    <div className='col-lg-4'>
                         <div className='jumbotron'>
                             <h3 className="cryptofolio">Cryptofolio</h3>
-                            <hr/>
                             <div className="card">
-                              <div className="card-body">
-                                <h5 className="card-title">Login</h5>
-                                  <div className="form-group">
-                                    <label htmlFor="exampleInputEmail2">Username</label>
-                                    <input 
-                                        autoFocus
-                                        maxLength={40}
-                                        disabled={localStorage.user ? true : false}
-                                        value={username} 
-                                        type="email" 
-                                        className="form-control" 
-                                        id="exampleInputEmail2" 
-                                        aria-describedby="emailHelp" 
-                                        placeholder="Username"
-                                        onChange = { ({target}) => handleChangeUsername({username: target.value}) }
-                                        />
-                                  </div>
-                                  <div className="form-group form-group-password">
-                                    <label htmlFor="exampleInputPassword2">Password</label>
-                                    <input 
-                                        disabled={localStorage.user ? true : false}
-                                        maxLength={40}
-                                        value={password} 
-                                        type="password" 
-                                        className="form-control" 
-                                        id="exampleInputPassword2" 
-                                        placeholder="Password"
-                                        onChange = { ({target}) => handleChangePassword({password: target.value}) }
-                                        />
-                                  </div>
-                                  { localStorage.user ? <div className="alert alert-primary" role="alert"> Welcome {JSON.parse(localStorage.getItem('user')).username}! </div> : ''}
-                                  { invalid && !localStorage.user ? <small id="postFormMessage" className="form-text text-muted">Invalid username or password.</small> : null}
-                              </div>
+                                <div className={`card-body ${invalid ? 'card-body-login' : ''}`}>
+                                    <div className="form-group">
+                                        <input 
+                                            autoFocus
+                                            maxLength={40}
+                                            disabled={localStorage.user ? true : false}
+                                            value={username} 
+                                            type="email" 
+                                            className={`form-control ${invalid ? 'is-invalid' : null}`} 
+                                            id="exampleInputEmail2" 
+                                            aria-describedby="emailHelp" 
+                                            placeholder="Username"
+                                            onChange = { ({target}) => handleChangeUsername({username: target.value}) }
+                                            />
+                                    </div>
+                                    <div className="form-group form-group-password">
+                                        <input 
+                                            disabled={localStorage.user ? true : false}
+                                            maxLength={40}
+                                            value={password} 
+                                            type="password" 
+                                            className={`form-control ${invalid ? 'is-invalid' : null}`} 
+                                            id="exampleInputPassword2" 
+                                            placeholder="Password"
+                                            onChange = { ({target}) => handleChangePassword({password: target.value}) }
+                                            />
+                                    </div>
+                                    {
+                                        localStorage.user ?
+                                        <button onClick={() => this.logout()} type="submit" className="btn btn-danger btn-block">Logout</button>
+                                        :
+                                        <button onClick={() => this.verifyUser()} type="submit" className="btn btn-primary btn-block">Login</button>
+                                    }
+                                    { localStorage.user ? <div className="alert alert-primary" role="alert"> Welcome {JSON.parse(localStorage.getItem('user')).username}! </div> : ''}
+                                    { invalid && !localStorage.user ? <small id="postFormMessage" className="form-text text-muted">Invalid username or password.</small> : null}
+                                </div>
                             </div>
-                            <br/>
-                            {
-                                localStorage.user ?
-                                <button onClick={() => this.logout()} type="submit" className="btn btn-danger btn-block">Logout</button>
-                                :
-                                <button onClick={() => this.verifyUser()} type="submit" className="btn btn-primary btn-block">Login</button>
-                            }
-                            <br/>
-                            <div className="switchtosignup">Don't have an account? <Link to="/">Sign up</Link></div>
                         </div>
                     </div>
-                    <div className='col-lg-3'></div>
+                    <div className='col-lg-4'></div>
+                </div>
+                <div className='row'>
+                    <div className='col-lg-4'></div>
+                    <div className='col-lg-4'>
+                        <div className='jumbotron jumbotron-switch'>
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="switchtosignup">Don't have an account? <Link to="/">Sign up</Link></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='col-lg-4'></div>
                 </div>
             </div>
         )

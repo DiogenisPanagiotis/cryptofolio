@@ -14,8 +14,9 @@ class signupContainer extends Component {
 
     addUser() {
         const { addUser, getUsers, toggleSignedup, setUsernameTakenTrue, 
-        setUsernameTakenFalse, handleChangeUsername, handleChangePassword } = this.props.actions
-        const { username, password, usernameTaken } = this.props.signupReducer
+        setUsernameTakenFalse, handleChangeUsername, handleChangePassword,
+        handleChangeEmail } = this.props.actions
+        const { email, username, password, usernameTaken } = this.props.signupReducer
         const { users } = this.props.userReducer
 
         if (users && users.length > 0) {
@@ -30,8 +31,9 @@ class signupContainer extends Component {
             }
         }
 
-        if (username.length > 0 && password.length > 0) {
-            addUser({ username: username, password: password }).then(() => {
+        if (email.length > 0 && username.length > 0 && password.length > 0) {
+            addUser({ email: email, username: username, password: password }).then(() => {
+                handleChangeEmail({ email: '' })
                 handleChangeUsername({ username: '' })
                 handleChangePassword({ password: '' })
                 setUsernameTakenFalse() 
@@ -42,35 +44,47 @@ class signupContainer extends Component {
     }
 
     render() {
-        const { username, password, signedup, usernameTaken } = this.props.signupReducer
-        const { handleChangeUsername, handleChangePassword } = this.props.actions
+        const { email, username, password, signedup, usernameTaken } = this.props.signupReducer
+        const { handleChangeEmail, handleChangeUsername, handleChangePassword } = this.props.actions
         return (
             <div className='container'>
                 <div className='row'>
-                    <div className='col-lg-3'></div>
-                    <div className='col-lg-6'>
+                    <div className='col-lg-4'></div>
+                    <div className='col-lg-4'>
                         <div className='jumbotron'>
                             <h3 className="cryptofolio">Cryptofolio</h3>
-                            <hr/>
                             <div className="card">
                                 <div className="card-body">
-                                    <h5 className="card-title">Sign Up</h5>
+                                    <Link to="/login"><button type="submit" className="btn btn-primary btn-block">Login</button></Link>
+                                    <div className="row">
+                                        <div className='col-5'><hr/></div>
+                                        <div className='col-2 or'> OR </div>
+                                        <div className='col-5'><hr/></div>
+                                    </div>
                                     <div className="form-group">
-                                        <label htmlFor="exampleInputEmail1">Username</label>
                                         <input 
                                             autoFocus
+                                            maxLength={40}
+                                            value={email} 
+                                            type="email" 
+                                            className="form-control" 
+                                            id="exampleInputEmail1" 
+                                            placeholder="Email"
+                                            onChange = { ({target}) => handleChangeEmail({email: target.value}) }
+                                            />
+                                    </div>                                    
+                                    <div className="form-group">
+                                        <input 
                                             maxLength={40}
                                             value={username} 
                                             type="email" 
                                             className="form-control" 
-                                            id="exampleInputEmail1" 
-                                            aria-describedby="emailHelp" 
+                                            id="exampleInputUsername1"  
                                             placeholder="Username"
                                             onChange = { ({target}) => handleChangeUsername({username: target.value}) }
                                             />
                                     </div>
                                     <div className="form-group form-group-password">
-                                        <label htmlFor="exampleInputPassword1">Password</label>
                                         <input 
                                             maxLength={40}
                                             value={password} 
@@ -83,15 +97,25 @@ class signupContainer extends Component {
                                     </div>
                                     { signedup && !usernameTaken ? <div className="alert alert-success" role="alert"> Thanks for signing up! </div> : '' }
                                     { usernameTaken  ? <small id="postFormMessage" className="form-text text-muted">Username is already taken.</small> : '' }
+                                    <button onClick={() => this.addUser()} type="submit" className="btn btn-primary btn-block">Sign up</button>
                                 </div>
                             </div>
-                            <br/>
-                            <button onClick={() => this.addUser()} type="submit" className="btn btn-primary btn-block">Sign up</button>
-                            <br/>
-                            <div className="switchtosignup">Have an account? <Link to="/login">Login</Link></div>
                         </div>
                     </div>
-                    <div className='col-lg-3'></div>
+                    <div className='col-lg-4'></div>
+                </div>
+                <div className='row'>
+                    <div className='col-lg-4'></div>
+                    <div className='col-lg-4'>
+                        <div className='jumbotron jumbotron-switch'>
+                            <div className="card">
+                                <div className="card-body">
+                                    <div className="switchtosignup">Have an account? <Link to="/login">Login</Link></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='col-lg-4'></div>
                 </div>
             </div>
         )

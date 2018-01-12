@@ -8,6 +8,7 @@ module.exports = {
     },
     addUser: (req, res) => {
         let model = new UserModel()
+        model.email = req.body.email
         model.username = req.body.username
         model.password = req.body.password
         model.save(err => {
