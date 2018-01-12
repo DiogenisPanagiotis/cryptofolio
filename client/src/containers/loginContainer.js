@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../actions/actions'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import passwordHash from 'password-hash'
+import * as service from '../services'
 import '../index.css'
 
 class loginContainer extends Component {
@@ -11,6 +12,7 @@ class loginContainer extends Component {
     componentDidMount() {
         let { handleChangeUsername, handleChangePassword } = this.props.actions
         let { getUsers } = this.props.actions
+        service.redirectToDashboard(window.localStorage, this.props)
         window.addEventListener('resize', this.resize)
         handleChangeUsername({ username: '' })
         handleChangePassword({ password: '' })
@@ -39,6 +41,7 @@ class loginContainer extends Component {
                         setInvalid()
                     }   
                     getUsers()
+                    this.props.history.push('/dashboard')
                     return
                 }
             }
@@ -136,4 +139,4 @@ function mapDispatchToProps(dispatch) {
         }, dispatch)
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(loginContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(loginContainer))

@@ -119,6 +119,33 @@ body {
 		background-color: #FAFAFA;
 		border: none;		
 	}
+	#currencyTable {
+		background-color: #fff;
+		border: solid 1px #eee;
+	}
+}
+
+#Cryptofolio {
+	font-family: 'Oleo Script', cursive;
+}
+
+.navbar {
+	background-color: #fff;
+	border: solid 1px #eee;
+}
+
+#currencyTable {
+	margin-top: 60px;
+}
+
+.container.container-dash {
+	margin: 0px!important;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.navbar-collapse.collapse.in {
+  display: block!important;
 }
 
 

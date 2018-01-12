@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../actions/actions'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import passwordHash from 'password-hash'
+import * as service from '../services'
 import '../index.css'
 
 class signupContainer extends Component {
@@ -11,6 +12,8 @@ class signupContainer extends Component {
     componentDidMount() {
         const { handleChangeUsername, handleChangePassword, handleChangeEmail } = this.props.actions
         const { getUsers } = this.props.actions
+        const { localStorage } = window
+        service.redirectToDashboard(window.localStorage, this.props)
         window.addEventListener('resize', this.resize)
         handleChangeEmail({ email: '' })
         handleChangeUsername({ username: '' })
@@ -155,4 +158,4 @@ function mapDispatchToProps(dispatch) {
         }, dispatch)
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(signupContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(signupContainer))
