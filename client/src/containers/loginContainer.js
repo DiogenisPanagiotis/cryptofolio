@@ -9,7 +9,14 @@ class loginContainer extends Component {
 
     componentDidMount() {
         const { getUsers } = this.props.actions
+        window.addEventListener('resize', this.resize)
         getUsers()        
+    }
+
+    resize = () => this.forceUpdate()
+
+    componentWillUnmount() {
+      window.removeEventListener('resize', this.resize)
     }
 
     verifyUser() {
@@ -46,17 +53,19 @@ class loginContainer extends Component {
     render() {
         let { username, password, invalid } = this.props.loginReducer
         let { handleChangeUsername, handleChangePassword } = this.props.actions
-        let { localStorage } = window
-        console.log(invalid)
+        let { localStorage, innerWidth } = window
+        let handleJumbotronHide = innerWidth < 451 ? 'jumbotron-hide' : ''
+        let handleCardHide = innerWidth < 451 ? 'card-hide' : ''
+        let handleCardBodyHide = innerWidth < 451 ? 'card-body-hide' : ''
         return (
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-4'></div>
                     <div className='col-lg-4'>
-                        <div className='jumbotron'>
-                            <h3 className="cryptofolio">Cryptofolio</h3>
-                            <div className="card">
-                                <div className={`card-body ${invalid ? 'card-body-login' : ''}`}>
+                        <div className={`jumbotron ${handleJumbotronHide}`}>
+                            <h1 className="cryptofolio">Cryptofolio</h1>
+                            <div className={`card ${handleCardHide}`}>
+                                <div className={`card-body ${invalid ? 'card-body-login' : ''} ${handleCardBodyHide}`}>
                                     <div className="form-group">
                                         <input 
                                             autoFocus
@@ -100,9 +109,9 @@ class loginContainer extends Component {
                 <div className='row'>
                     <div className='col-lg-4'></div>
                     <div className='col-lg-4'>
-                        <div className='jumbotron jumbotron-switch'>
-                            <div className="card">
-                                <div className="card-body">
+                        <div className={`jumbotron jumbotron-switch ${handleJumbotronHide}`}>
+                            <div className={`card ${handleCardHide}`}>
+                                <div className={`card-body card-body-switch ${handleCardBodyHide}`}>
                                     <div className="switchtosignup">Don't have an account? <Link to="/">Sign up</Link></div>
                                 </div>
                             </div>

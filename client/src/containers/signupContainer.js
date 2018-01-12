@@ -9,13 +9,19 @@ class signupContainer extends Component {
 
     componentDidMount() {
         const { getUsers } = this.props.actions
+        window.addEventListener('resize', this.resize)
         getUsers()        
+    }
+    resize = () => this.forceUpdate()
+
+    componentWillUnmount() {
+      window.removeEventListener('resize', this.resize)
     }
 
     addUser() {
         const { addUser, getUsers, toggleSignedup, setUsernameTakenTrue, 
         setUsernameTakenFalse, handleChangeUsername, handleChangePassword,
-        handleChangeEmail } = this.props.actions
+        handleChangeEmail, setInvalidSignup } = this.props.actions
         const { email, username, password, usernameTaken } = this.props.signupReducer
         const { users } = this.props.userReducer
 
@@ -41,20 +47,26 @@ class signupContainer extends Component {
                 getUsers()
             })
         }
+
+        setInvalidSignup()
     }
 
     render() {
-        const { email, username, password, signedup, usernameTaken } = this.props.signupReducer
+        const { email, username, password, signedup, usernameTaken, invalid } = this.props.signupReducer
         const { handleChangeEmail, handleChangeUsername, handleChangePassword } = this.props.actions
+        let { innerWidth } = window
+        let handleJumbotronHide = innerWidth < 451 ? 'jumbotron-hide' : ''
+        let handleCardHide = innerWidth < 451 ? 'card-hide' : ''
+        let handleCardBodyHide = innerWidth < 451 ? 'card-body-hide' : ''
         return (
             <div className='container'>
                 <div className='row'>
-                    <div className='col-lg-4'></div>
+                    <div id='mobile' className='col-lg-4'></div>
                     <div className='col-lg-4'>
-                        <div className='jumbotron'>
-                            <h3 className="cryptofolio">Cryptofolio</h3>
-                            <div className="card">
-                                <div className="card-body">
+                        <div className={`jumbotron ${handleJumbotronHide}`}>
+                            <h1 className="cryptofolio">Cryptofolio</h1>
+                            <div className={`card ${handleCardHide}`}>
+                                <div className={`card-body ${invalid ? 'card-body-login' : ''} ${handleCardBodyHide}`}>
                                     <Link to="/login"><button type="submit" className="btn btn-primary btn-block">Login</button></Link>
                                     <div className="row">
                                         <div className='col-5'><hr/></div>
@@ -67,7 +79,7 @@ class signupContainer extends Component {
                                             maxLength={40}
                                             value={email} 
                                             type="email" 
-                                            className="form-control" 
+                                            className={`form-control ${invalid ? 'is-invalid' : ''}`}  
                                             id="exampleInputEmail1" 
                                             placeholder="Email"
                                             onChange = { ({target}) => handleChangeEmail({email: target.value}) }
@@ -78,7 +90,7 @@ class signupContainer extends Component {
                                             maxLength={40}
                                             value={username} 
                                             type="email" 
-                                            className="form-control" 
+                                            className={`form-control ${invalid ? 'is-invalid' : null}`}  
                                             id="exampleInputUsername1"  
                                             placeholder="Username"
                                             onChange = { ({target}) => handleChangeUsername({username: target.value}) }
@@ -89,15 +101,16 @@ class signupContainer extends Component {
                                             maxLength={40}
                                             value={password} 
                                             type="password" 
-                                            className="form-control" 
+                                            className={`form-control ${invalid ? 'is-invalid' : null}`}  
                                             id="exampleInputPassword1" 
                                             placeholder="Password"
                                             onChange = { ({target}) => handleChangePassword({password: target.value}) }
                                             />
                                     </div>
+                                    <button onClick={() => this.addUser()} type="submit" className="btn btn-primary btn-block">Sign up</button>
                                     { signedup && !usernameTaken ? <div className="alert alert-success" role="alert"> Thanks for signing up! </div> : '' }
                                     { usernameTaken  ? <small id="postFormMessage" className="form-text text-muted">Username is already taken.</small> : '' }
-                                    <button onClick={() => this.addUser()} type="submit" className="btn btn-primary btn-block">Sign up</button>
+                                    { invalid  ? <small id="postFormMessage" className="form-text text-muted">Invalid credentials.</small> : '' }
                                 </div>
                             </div>
                         </div>
@@ -107,9 +120,9 @@ class signupContainer extends Component {
                 <div className='row'>
                     <div className='col-lg-4'></div>
                     <div className='col-lg-4'>
-                        <div className='jumbotron jumbotron-switch'>
-                            <div className="card">
-                                <div className="card-body">
+                        <div className={`jumbotron jumbotron-switch ${handleJumbotronHide}`}>
+                            <div className={`card ${handleCardHide}`}>
+                                <div className={`card-body card-body-switch ${handleCardBodyHide}`}>
                                     <div className="switchtosignup">Have an account? <Link to="/login">Login</Link></div>
                                 </div>
                             </div>

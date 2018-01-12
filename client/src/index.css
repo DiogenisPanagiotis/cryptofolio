@@ -71,4 +71,25 @@ body {
 	padding-bottom: 0px;
 }
 
+.card-body {
+	padding: 20px 0px 0px 0px;
+}
+
+.card-body-switch {
+	padding-bottom: 20px;
+}
+
+.card-body-hide {
+	background-color: #FAFAFA;
+	border: none;
+}
+.card-hide {
+	border: none;
+}
+
+.jumbotron-hide {
+	background-color: #FAFAFA;
+	border: none;
+}
+
 
