@@ -64,23 +64,18 @@ class signupContainer extends Component {
     render() {
         const { email, username, password, signedup, usernameTaken, invalid } = this.props.signupReducer
         const { handleChangeEmail, handleChangeUsername, handleChangePassword } = this.props.actions
-        let { innerWidth } = window
-        let handleJumbotronHide = innerWidth < 451 ? 'jumbotron-hide' : ''
-        let handleCardHide = innerWidth < 451 ? 'card-hide' : ''
-        let handleCardBodyHide = innerWidth < 451 ? 'card-body-hide' : ''
-        let handleCardSubtitleHide = innerWidth < 451 ? 'card-subtitle-hide' : ''
         return (
             <div className='container'>
                 <div className='row'>
                     <div id='mobile' className='col-lg-4'></div>
                     <div className='col-lg-4'>
-                        <div className={`jumbotron ${handleJumbotronHide}`}>
+                        <div className='jumbotron'>
                             <h1 className="cryptofolio">Cryptofolio</h1>
-                            <div className={`card ${handleCardHide}`}>
-                                <h5 className={`card-subtitle mb-2 text-muted ${handleCardSubtitleHide}`}>
+                            <div className='card'>
+                                <h5 className='card-subtitle mb-2 text-muted'>
                                     Manage and track your cryptocurrency investments.
                                 </h5>
-                                <div className={`card-body ${invalid ? 'card-body-login' : ''} ${handleCardBodyHide}`}>
+                                <div className={`card-body ${invalid ? 'card-body-login' : ''}`}>
                                     <Link to="/login"><button type="submit" className="btn btn-primary btn-block">Login</button></Link>
                                     <div className="row">
                                         <div className='col-5'><hr/></div>
@@ -133,9 +128,9 @@ class signupContainer extends Component {
                 <div className='row'>
                     <div className='col-lg-4'></div>
                     <div className='col-lg-4'>
-                        <div className={`jumbotron jumbotron-switch ${handleJumbotronHide}`}>
-                            <div className={`card ${handleCardHide}`}>
-                                <div className={`card-body card-body-switch ${handleCardBodyHide}`}>
+                        <div className='jumbotron jumbotron-switch'>
+                            <div className='card'>
+                                <div className='card-body card-body-switch'>
                                     <div className="switchtosignup">Have an account? <Link to="/login">Login</Link></div>
                                 </div>
                             </div>

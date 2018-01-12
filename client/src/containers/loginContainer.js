@@ -58,19 +58,16 @@ class loginContainer extends Component {
     render() {
         let { username, password, invalid } = this.props.loginReducer
         let { handleChangeUsername, handleChangePassword } = this.props.actions
-        let { localStorage, innerWidth } = window
-        let handleJumbotronHide = innerWidth < 451 ? 'jumbotron-hide' : ''
-        let handleCardHide = innerWidth < 451 ? 'card-hide' : ''
-        let handleCardBodyHide = innerWidth < 451 ? 'card-body-hide' : ''
+        let { localStorage } = window
         return (
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-4'></div>
                     <div className='col-lg-4'>
-                        <div className={`jumbotron jumbotron-login ${handleJumbotronHide}`}>
+                        <div className="jumbotron jumbotron-login">
                             <h1 className="cryptofolio">Cryptofolio</h1>
-                            <div className={`card ${handleCardHide}`}>
-                                <div className={`card-body ${invalid ? 'card-body-login' : ''} ${handleCardBodyHide}`}>
+                            <div className="card">
+                                <div className={`card-body ${invalid ? 'card-body-login' : ''}`}>
                                     <div className="form-group">
                                         <input 
                                             autoFocus
@@ -114,9 +111,9 @@ class loginContainer extends Component {
                 <div className='row'>
                     <div className='col-lg-4'></div>
                     <div className='col-lg-4'>
-                        <div className={`jumbotron jumbotron-switch ${handleJumbotronHide}`}>
-                            <div className={`card ${handleCardHide}`}>
-                                <div className={`card-body card-body-switch ${handleCardBodyHide}`}>
+                        <div className="jumbotron jumbotron-switch">
+                            <div className="card">
+                                <div className="card-body card-body-switch">
                                     <div className="switchtosignup">Don't have an account? <Link to="/">Sign up</Link></div>
                                 </div>
                             </div>

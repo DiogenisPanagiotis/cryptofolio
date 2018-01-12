@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import store from './store'
 import registerServiceWorker from './registerServiceWorker';
 import App from './containers/App'
-// import signupContainer from './containers/signupContainer'
 import loginContainer from './containers/loginContainer'
 import './index.css';
 
