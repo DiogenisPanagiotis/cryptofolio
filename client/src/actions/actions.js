@@ -26,8 +26,9 @@ const actions = {
         type: HANDLE_CHANGE_PASSWORD,
         payload: password
     }),    
-    toggleSignedup: () => ({
-        type: TOGGLE_SIGNEDUP
+    toggleSignedup: (bool) => ({
+        type: TOGGLE_SIGNEDUP,
+        payload: bool
     }),
     setUsernameTakenTrue: () => ({
         type: SET_USERNAMETAKEN_TRUE

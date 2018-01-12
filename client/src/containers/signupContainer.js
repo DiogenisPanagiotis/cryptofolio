@@ -27,8 +27,12 @@ class signupContainer extends Component {
         const { addUser, getUsers, toggleSignedup, setUsernameTakenTrue, 
         setUsernameTakenFalse, handleChangeUsername, handleChangePassword,
         handleChangeEmail, setInvalidSignup } = this.props.actions
-        const { email, username, password, usernameTaken } = this.props.signupReducer
+        const { email, username, password, usernameTaken, signedup } = this.props.signupReducer
         const { users } = this.props.userReducer
+
+        if (signedup) {
+            toggleSignedup(false)
+        }
 
         if (users && users.length > 0) {
             for (let userModel of users) {
@@ -49,12 +53,12 @@ class signupContainer extends Component {
                 handleChangeUsername({ username: '' })
                 handleChangePassword({ password: '' })
                 setUsernameTakenFalse() 
-                toggleSignedup() 
+                toggleSignedup(true) 
                 getUsers()
             })
+        } else {
+            setInvalidSignup()
         }
-
-        setInvalidSignup()
     }
 
     render() {

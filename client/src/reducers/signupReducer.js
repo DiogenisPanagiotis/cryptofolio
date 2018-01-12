@@ -37,7 +37,7 @@ export default function signupReducer(state = initialState, action) {
         case TOGGLE_SIGNEDUP:
             return {
                 ...state,
-                signedup: true
+                signedup: action.payload
             }    
         case SET_USERNAMETAKEN_TRUE:
             return {
