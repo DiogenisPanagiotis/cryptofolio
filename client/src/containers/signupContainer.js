@@ -9,8 +9,12 @@ import '../index.css'
 class signupContainer extends Component {
 
     componentDidMount() {
+        const { handleChangeUsername, handleChangePassword, handleChangeEmail } = this.props.actions
         const { getUsers } = this.props.actions
         window.addEventListener('resize', this.resize)
+        handleChangeEmail({ email: '' })
+        handleChangeUsername({ username: '' })
+        handleChangePassword({ password: '' })
         getUsers()        
     }
     resize = () => this.forceUpdate()
@@ -60,6 +64,7 @@ class signupContainer extends Component {
         let handleJumbotronHide = innerWidth < 451 ? 'jumbotron-hide' : ''
         let handleCardHide = innerWidth < 451 ? 'card-hide' : ''
         let handleCardBodyHide = innerWidth < 451 ? 'card-body-hide' : ''
+        let handleCardSubtitleHide = innerWidth < 451 ? 'card-subtitle-hide' : ''
         return (
             <div className='container'>
                 <div className='row'>
@@ -68,6 +73,9 @@ class signupContainer extends Component {
                         <div className={`jumbotron ${handleJumbotronHide}`}>
                             <h1 className="cryptofolio">Cryptofolio</h1>
                             <div className={`card ${handleCardHide}`}>
+                                <h5 className={`card-subtitle mb-2 text-muted ${handleCardSubtitleHide}`}>
+                                    Manage and track your cryptocurrency investments.
+                                </h5>
                                 <div className={`card-body ${invalid ? 'card-body-login' : ''} ${handleCardBodyHide}`}>
                                     <Link to="/login"><button type="submit" className="btn btn-primary btn-block">Login</button></Link>
                                     <div className="row">

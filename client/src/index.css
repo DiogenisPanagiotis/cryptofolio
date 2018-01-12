@@ -87,6 +87,16 @@ body {
 	border: none;
 }
 
+.card-subtitle {
+	text-align: center;
+	margin: 0px!important;
+	padding-top: 8px;
+}
+
+.card-subtitle-hide {
+	background-color: #FAFAFA;
+}
+
 .jumbotron-hide {
 	background-color: #FAFAFA;
 	border: none;

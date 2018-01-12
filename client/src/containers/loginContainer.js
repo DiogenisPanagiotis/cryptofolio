@@ -9,8 +9,11 @@ import '../index.css'
 class loginContainer extends Component {
 
     componentDidMount() {
+        const { handleChangeUsername, handleChangePassword } = this.props.actions
         const { getUsers } = this.props.actions
         window.addEventListener('resize', this.resize)
+        handleChangeUsername({ username: '' })
+        handleChangePassword({ password: '' })
         getUsers()        
     }
 
