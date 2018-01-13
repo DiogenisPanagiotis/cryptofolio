@@ -8,11 +8,6 @@ import '../index.css'
 
 class tableContainer extends Component {
 
-    componentDidMount() {
-        let { getCryptos } = this.props.actions
-        getCryptos()
-    }
-
     renderTables = () => {
         let { cryptocurrencies } = this.props.cryptoReducer
         if (cryptocurrencies) { 

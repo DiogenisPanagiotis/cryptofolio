@@ -11,14 +11,14 @@ class signupContainer extends Component {
 
     componentDidMount() {
         const { handleChangeUsername, handleChangePassword, handleChangeEmail } = this.props.actions
-        const { getUsers } = this.props.actions
+        const { getUsers, getCryptos } = this.props.actions
         const { localStorage } = window
         service.redirectToDashboard(window.localStorage, this.props)
         window.addEventListener('resize', this.resize)
         handleChangeEmail({ email: '' })
         handleChangeUsername({ username: '' })
         handleChangePassword({ password: '' })
-        getUsers()        
+        getUsers().then(getCryptos())       
     }
     resize = () => this.forceUpdate()
 
