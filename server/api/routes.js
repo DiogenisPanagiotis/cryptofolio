@@ -27,4 +27,8 @@ module.exports = function (app, express) {
         res.sendFile(path.join(__dirname, '../client/build/index.html'))
     })
 
+    app.get('*', (req, res) => {
+      res.send('what???', 404)
+    })
+
 }
