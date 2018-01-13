@@ -28,7 +28,7 @@ module.exports = function (app, express) {
     })
 
     app.get('*', (req, res) => {
-      res.send('what???', 404)
+      res.redirect('/')
     })
 
 }
