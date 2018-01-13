@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../actions/actions'
 import { withRouter } from 'react-router-dom'
-import NavContainer from './navContainer'
 import '../index.css'
 
 class tableContainer extends Component {
@@ -53,11 +52,8 @@ class tableContainer extends Component {
     }
 
     render() {
-        let { cryptocurrencies } = this.props.cryptoReducer
         return (
-            <div>
-            {this.renderTables()}
-            </div>
+            <div>{this.renderTables()}</div>
         )
     }
 

@@ -13,7 +13,7 @@ class signupContainer extends Component {
         const { handleChangeUsername, handleChangePassword, handleChangeEmail } = this.props.actions
         const { getUsers, getCryptos } = this.props.actions
         const { localStorage } = window
-        service.redirectToDashboard(window.localStorage, this.props)
+        service.redirectToDashboard(localStorage, this.props)
         window.addEventListener('resize', this.resize)
         handleChangeEmail({ email: '' })
         handleChangeUsername({ username: '' })

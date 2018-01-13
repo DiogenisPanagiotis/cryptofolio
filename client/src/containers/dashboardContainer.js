@@ -5,20 +5,9 @@ import actions from '../actions/actions'
 import { withRouter } from 'react-router-dom'
 import NavContainer from './navContainer'
 import TableContainer from './tableContainer'
-import axios from 'axios'
 import '../index.css'
 
 class dashboardContainer extends Component {
-
-    componentDidMount() {
-        let { localStorage } = window
-        let { toggleSignupOrLogin } = this.props.actions
-        if (!localStorage.user) {
-            toggleSignupOrLogin(false)
-            this.props.history.push('/')
-        }
-    }
-
     render() {
         return (
             <div className='container-dash'>
@@ -39,10 +28,12 @@ class dashboardContainer extends Component {
         )
     }
 }
+
 function mapStateToProps(state) {
     const { userReducer, cryptoReducer } = state
     return { userReducer, cryptoReducer }
 }
+
 function mapDispatchToProps(dispatch) {
     return {
         actions: bindActionCreators({
@@ -50,4 +41,5 @@ function mapDispatchToProps(dispatch) {
         }, dispatch)
     }
 }
+
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(dashboardContainer))
