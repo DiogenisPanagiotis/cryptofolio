@@ -20,7 +20,7 @@ class navContainer extends Component {
         localStorage.removeItem('user')
         this.props.history.push('/')
     }
-    
+
     render() {
         return (
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -29,7 +29,7 @@ class navContainer extends Component {
                 <span className="navbar-toggler-icon"></span>
               </button>
               <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
+                <ul className="navbar-nav ml-auto">
                   <li className="nav-item active">
                     <Link to='/' onClick={() => this.logout()}> <span className="nav-link">Logout</span></Link>
                   </li>
