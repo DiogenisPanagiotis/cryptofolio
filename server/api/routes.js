@@ -23,7 +23,7 @@ module.exports = function (app, express) {
 
     app.use('/api', router)
 
-    app.get('*', (req, res) => {
+    app.get('/*', (req, res) => {
         res.sendFile(path.join(__dirname, '../client/build/index.html'))
     })
 
