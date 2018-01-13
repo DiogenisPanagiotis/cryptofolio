@@ -13,6 +13,7 @@ render(
         <BrowserRouter>
         	<div>
 	            <Route exact path="/" component={App}/>
+	            <Route path="/" component={App}/>
 	            <Route exact path="/dashboard" component={dashboardContainer}/>
         	</div>
         </BrowserRouter>

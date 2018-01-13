@@ -7,12 +7,21 @@ import '../index.css'
 
 class navContainer extends Component {
 
+    componentDidMount() {
+        let { localStorage } = window
+        let { toggleSignupOrLogin } = this.props.actions
+        if (!localStorage.user) {
+            toggleSignupOrLogin(false)
+            this.props.history.push('/')
+        }
+    }
+
     logout() {
         localStorage.removeItem('user')
         this.props.history.push('/')
     }
+    
     render() {
-        let user = JSON.parse(window.localStorage.user).username
         return (
             <nav className="navbar navbar-expand-lg navbar-light">
               <a id="Cryptofolio" className="navbar-brand" href="#">Cryptofolio</a>
